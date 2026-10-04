@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: smf-gst-billing
+    env: python
+    plan: free
+    buildCommand: "pip install -r gst_billing/requirements.txt"
+    startCommand: "cd gst_billing && gunicorn wsgi:app --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
